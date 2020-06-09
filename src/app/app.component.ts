@@ -14,9 +14,14 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    const alreadyLoggedIn: boolean = true;
     // validate the user session
     // get the user role and forward to the correct dashboard
     // currently we move to admin dashboard
-    this.router.navigateByUrl('db/admin');
+    if(alreadyLoggedIn) {
+      this.router.navigateByUrl('admin');
+    } else {
+      this.router.navigateByUrl('login')
+    }
   }
 }
