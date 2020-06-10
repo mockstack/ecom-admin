@@ -51,9 +51,11 @@ import { ProductComponent } from './pages/product/product.component';
 import { PackComponent } from './pages/pack/pack.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { AdminComponent } from './admin.component';
+import { CategoryViewComponent } from './components/category-view/category-view.component';
+import { CategoryFormComponent } from './components/category-form/category-form.component';
 
 @NgModule({
-	declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent],
+	declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent, CategoryViewComponent, CategoryFormComponent],
 	imports: [
 		CommonModule,
     AdminRoutingModule,
