@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { PackComponent } from './pages/pack/pack.component';
+import { ProductComponent } from './pages/product/product.component';
+import { AdminComponent } from './admin.component';
 
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent, pathMatch: 'full'}
+  {
+    path: '', component: AdminComponent, children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'category', component: CategoryComponent },
+      { path: 'product', component: ProductComponent },
+      { path: 'pack', component: PackComponent },
+    ]
+  }
 ];
 
 @NgModule({

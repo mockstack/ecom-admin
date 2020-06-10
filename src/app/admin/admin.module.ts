@@ -47,9 +47,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './pages/product/product.component';
+import { PackComponent } from './pages/pack/pack.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { AdminComponent } from './admin.component';
 
 @NgModule({
-	declarations: [DashboardComponent],
+	declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent],
 	imports: [
 		CommonModule,
     AdminRoutingModule,
