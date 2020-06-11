@@ -9,6 +9,7 @@
           <input matInput required formControlName="productName">
         </mat-form-field>
         <br>
+        <!--Product Image-->
 
         <mat-form-field appearance="fill">
           <mat-label>Short Description</mat-label>
@@ -59,25 +60,23 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Category</mat-label>
-          <select matNativeControl required formControlName="category">
-            <option value="bottle"> Bottles </option>
-            <option value="bottle"> Packet </option>
-            <option value="kg"> Kg </option>
-            <option value="unit"> Unit </option>
-            <option value="bundle"> Bundle </option>
-          </select>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let item of categoryList" [value]="item">{{item.name}}</mat-option>
+          </mat-select>
+          <!--<select matNativeControl required formControlName="category">
+            <option *ngFor="let item of categoryList" value="item"> {{item.name}} </option>
+          </select>-->
         </mat-form-field>
         <br>
 
         <mat-form-field appearance="fill">
           <mat-label>Supplier</mat-label>
-          <select matNativeControl required formControlName="supplier">
-            <option value="bottle"> Bottles </option>
-            <option value="bottle"> Packet </option>
-            <option value="kg"> Kg </option>
-            <option value="unit"> Unit </option>
-            <option value="bundle"> Bundle </option>
-          </select>
+          <mat-select formControlName="supplier">
+            <mat-option *ngFor="let item of supplierList" [value]="item">{{item.company_name}}</mat-option>
+          </mat-select>
+          <!--<select matNativeControl required formControlName="supplier">
+            <option *ngFor="let item of supplierList" value="item"> {{item.company_name}} </option>
+          </select>-->
         </mat-form-field>
         <br>
 
@@ -89,4 +88,4 @@
       </mat-card-actions>
     </mat-card-content>
   </mat-card>
-  </form>
+</form>

@@ -60,9 +60,9 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { ProductGridItemComponent } from './components/product-grid-item/product-grid-item.component';
 
 @NgModule({
-	declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent, CategoryViewComponent, CategoryFormComponent, SupplierComponent, SupplierFormComponent, SupplierViewComponent, ProductFormComponent, ProductGridItemComponent],
-	imports: [
-		CommonModule,
+  declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent, CategoryViewComponent, CategoryFormComponent, SupplierComponent, SupplierFormComponent, SupplierViewComponent, ProductFormComponent, ProductGridItemComponent],
+  imports: [
+    CommonModule,
     AdminRoutingModule,
 
     A11yModule,
@@ -110,7 +110,7 @@ import { ProductGridItemComponent } from './components/product-grid-item/product
     ScrollingModule,
     ReactiveFormsModule,
     FormsModule
-	], exports: [
+  ], exports: [
     A11yModule,
     ClipboardModule,
     CdkStepperModule,
