@@ -19,7 +19,7 @@ export class AppComponent {
     // get the user role and forward to the correct dashboard
     // currently we move to admin dashboard
     if(alreadyLoggedIn) {
-      this.router.navigateByUrl('supplier');
+      this.router.navigateByUrl('product');
     } else {
       this.router.navigateByUrl('login')
     }

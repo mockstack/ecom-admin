@@ -1,0 +1,92 @@
+<form [formGroup]="productForm" (ngSubmit)="saveSupplier(productForm.value)" autocomplete="off" novalidate>
+  <mat-card>
+    <mat-card-title>Product Form</mat-card-title>
+    <mat-card-content>
+      <div class="example-container">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Product Name</mat-label>
+          <input matInput required formControlName="productName">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Short Description</mat-label>
+          <textarea matInput required formControlName="shortDescription"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Long Description</mat-label>
+          <textarea matInput required formControlName="longDescription"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Unit Price(LKR)</mat-label>
+          <input matInput required formControlName="unitPriceLKR">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Unit Price(USD)</mat-label>
+          <input matInput required formControlName="unitPriceUSD">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Measurement Unit</mat-label>
+          <select matNativeControl required formControlName="measurementUnit">
+            <option value="bottle"> Bottles </option>
+            <option value="bottle"> Packet </option>
+            <option value="kg"> Kg </option>
+            <option value="unit"> Unit </option>
+            <option value="bundle"> Bundle </option>
+          </select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Promotions</mat-label>
+          <textarea matInput formControlName="promotion"></textarea>
+        </mat-form-field>
+        <br>
+
+        <mat-checkbox formControlName="stockAvailable">Stock Available</mat-checkbox>
+        <br>
+
+        <mat-checkbox formControlName="showToCustomer">Show to Customer</mat-checkbox>
+        <br>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <select matNativeControl required formControlName="category">
+            <option value="bottle"> Bottles </option>
+            <option value="bottle"> Packet </option>
+            <option value="kg"> Kg </option>
+            <option value="unit"> Unit </option>
+            <option value="bundle"> Bundle </option>
+          </select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Supplier</mat-label>
+          <select matNativeControl required formControlName="supplier">
+            <option value="bottle"> Bottles </option>
+            <option value="bottle"> Packet </option>
+            <option value="kg"> Kg </option>
+            <option value="unit"> Unit </option>
+            <option value="bundle"> Bundle </option>
+          </select>
+        </mat-form-field>
+        <br>
+
+      </div>
+
+      <mat-card-actions>
+        <button mat-button [disabled]="!productForm.valid">SAVE</button>
+        <button mat-button (click)="resetForm()">CANCEL</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+  </form>
