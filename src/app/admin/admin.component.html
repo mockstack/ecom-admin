@@ -13,19 +13,23 @@
 		<mat-nav-list>
       <mat-list-item>
 				<mat-icon mat-list-icon>dashboard</mat-icon>
-				<a mat-list-item [routerLink]="'/dashboard'"> Dashboard </a>
+				<a mat-list-item [routerLink]="'/dashboard'" (click)="sidenav.toggle()"> Dashboard </a>
 			</mat-list-item>
 			<mat-list-item>
 				<mat-icon mat-list-icon>shopping_basket</mat-icon>
-				<a mat-list-item [routerLink]="'/product'"> Products </a>
+				<a mat-list-item [routerLink]="'/product'" (click)="sidenav.toggle()"> Products </a>
 			</mat-list-item>
 			<mat-list-item>
         <mat-icon>category</mat-icon>
-				<a mat-list-item [routerLink]="'/category'"> Categories </a>
+				<a mat-list-item [routerLink]="'/category'" (click)="sidenav.toggle()"> Categories </a>
 			</mat-list-item>
 			<mat-list-item>
         <mat-icon>playlist_add_check</mat-icon>
-				<a mat-list-item [routerLink]="'/pack'"> Packs </a>
+				<a mat-list-item [routerLink]="'/pack'" (click)="sidenav.toggle()"> Packs </a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>local_shipping</mat-icon>
+				<a mat-list-item [routerLink]="'/supplier'" (click)="sidenav.toggle()"> Supplier </a>
 			</mat-list-item>
 			<mat-list-item>
         <mat-icon>close</mat-icon>
