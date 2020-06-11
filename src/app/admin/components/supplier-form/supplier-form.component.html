@@ -1,0 +1,101 @@
+<form [formGroup]="supplierForm" (ngSubmit)="saveSupplier(supplierForm.value)" autocomplete="off" novalidate>
+  <mat-card>
+    <mat-card-title>Supplier Form</mat-card-title>
+    <mat-card-content>
+      <div class="example-container">
+        <!--Basic Info-->
+        <mat-card-subtitle>Basics</mat-card-subtitle>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <select matNativeControl required formControlName="title">
+            <option value="mr"> Mr. </option>
+            <option value="mrs"> Mrs. </option>
+            <option value="miss"> Miss </option>
+            <option value="ms"> Ms. </option>
+          </select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Contact Name</mat-label>
+          <input matInput required formControlName="name">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Company Name</mat-label>
+          <input matInput required formControlName="company">
+        </mat-form-field>
+        <br>
+
+        <mat-divider></mat-divider>
+        <br>
+
+        <!--Contact Info-->
+        <mat-card-subtitle>Contacts</mat-card-subtitle>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Telephone Number</mat-label>
+          <input matInput required formControlName="telephone">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput required formControlName="email">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fax</mat-label>
+          <input matInput formControlName="fax">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <input matInput required formControlName="postalcode">
+        </mat-form-field>
+        <br>
+
+        <mat-divider></mat-divider>
+        <br>
+
+        <!--Location Info-->
+        <mat-card-subtitle>Location</mat-card-subtitle>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>District</mat-label>
+          <select matNativeControl required formControlName="district">
+            <option value="kalutara"> Kalutara </option>
+            <option value="colombo"> Colombo </option>
+            <option value="gampaha"> Gampaha </option>
+          </select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput required formControlName="city">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput required formControlName="address">
+        </mat-form-field>
+        <br>
+
+      </div>
+
+      <mat-card-actions>
+        <button mat-button [disabled]="!supplierForm.valid">SAVE</button>
+        <button mat-button (click)="resetForm()">CANCEL</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+  </form>
