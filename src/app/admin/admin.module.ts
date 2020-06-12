@@ -58,9 +58,10 @@ import { SupplierFormComponent } from './components/supplier-form/supplier-form.
 import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductGridItemComponent } from './components/product-grid-item/product-grid-item.component';
+import { ProductGridViewComponent } from './components/product-grid-view/product-grid-view.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent, CategoryViewComponent, CategoryFormComponent, SupplierComponent, SupplierFormComponent, SupplierViewComponent, ProductFormComponent, ProductGridItemComponent],
+  declarations: [DashboardComponent, ProductComponent, PackComponent, CategoryComponent, AdminComponent, CategoryViewComponent, CategoryFormComponent, SupplierComponent, SupplierFormComponent, SupplierViewComponent, ProductFormComponent, ProductGridItemComponent, ProductGridViewComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

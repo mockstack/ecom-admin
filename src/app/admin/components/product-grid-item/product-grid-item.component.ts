@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/common/model/product';
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-product-grid-item',
-  templateUrl: './product-grid-item.component.html',
-  styleUrls: ['./product-grid-item.component.scss']
+	selector: 'app-product-grid-item',
+	templateUrl: './product-grid-item.component.html',
+	styleUrls: ['./product-grid-item.component.scss']
 })
 export class ProductGridItemComponent implements OnInit {
 
-  constructor() { }
+	environment = environment;
+	@Input() item: Product;
+	constructor() { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+
+	}
 
 }

@@ -28,4 +28,9 @@ export class ProductService {
   public addProduct(formData): Observable<any> {
 	  return this.httpClient.post(environment.apiUrl + 'product', formData);
   }
+
+  /**Get all products */
+  public getAllProducts(): Observable<Object> {
+	  return this.httpClient.get(environment.apiUrl + 'product');
+  }
 }

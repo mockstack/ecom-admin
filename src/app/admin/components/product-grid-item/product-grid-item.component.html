@@ -1,11 +1,16 @@
-<mat-card class="example-card m-2">
+<mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>Shiba Inu</mat-card-title>
+	<mat-card-title>{{item.name}}</mat-card-title>
+	<mat-card-subtitle>{{item.unit_price}}/{{item.measurementUnit}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQFM7antBGoz0PkxEX-HXYd8Kn3EG0Wu_b50u7BCHNfhX7MnHKE&usqp=CAU" alt="Photo of a Shiba Inu">
+  <div class="text-center">
+	<img mat-card-lg-image *ngIf="item.thumbImage !== undefined" src="{{environment.apiUrl}}{{item.thumbImage}}" alt="photo">
+	<img mat-card-lg-image *ngIf="item.thumbImage === undefined" src="assets/image/no-image.png" alt="photo">
+  </div>
+
   <mat-card-content>
     <p>
-      The Shiba Inu is the smallest of the six original and distinct spit.
+      {{item.short_desc}}
     </p>
   </mat-card-content>
   <mat-card-actions>
