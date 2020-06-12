@@ -23,4 +23,9 @@ export class ProductService {
   public getProductsByCategoryId(id): Observable<Object> {
     return this.httpClient.get(environment.apiUrl + 'product/byCategory/' + id);
   }
+
+  /**Add a new product */
+  public addProduct(formData): Observable<any> {
+	  return this.httpClient.post(environment.apiUrl + 'product', formData);
+  }
 }

@@ -1,8 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { CategoryService } from 'src/app/common/ws/category.service';
 import { SupplierService } from 'src/app/common/ws/supplier.service';
-import { ConditionalExpr } from '@angular/compiler';
+import { Product } from 'src/app/common/model/product';
+import { Category } from 'src/app/common/model/category';
+import { Supplier } from 'src/app/common/model/supplier';
+import { ProductService } from 'src/app/common/ws/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-product-form',
@@ -10,23 +14,38 @@ import { ConditionalExpr } from '@angular/compiler';
 	styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
-
-	productForm: FormGroup;
 	public categoryList = [];
 	public supplierList = [];
 
+	//STEPPER
+	basicInforFormGroup: FormGroup;
+	imageFormGroup: FormGroup;
+	associationFormGroup: FormGroup;
+
+	// Measurement units
+	mesurementUnits = [{ name: 'Bottle', value: 'bottle' },
+	{ name: 'Packet', value: 'packet' }, { name: 'Kg', value: 'kg' },
+	{ name: 'Bottle', value: 'bottle' }, { name: 'Unit', value: 'unit' },
+	{ name: 'Bundle', value: 'bundle' }, { name: 'Piece', value: 'piece' }]
+
 	@ViewChild("fileUpload", { static: false }) fileUpload: ElementRef; files = [];
 
-	constructor(private categoryService: CategoryService, private supplierService: SupplierService) { }
+	constructor(private categoryService: CategoryService, private supplierService: SupplierService,
+		private formBuilder: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar) { }
 
 	ngOnInit(): void {
-		this.productForm = new FormGroup({
+		this.basicInforFormGroup = new FormGroup({
 			productName: new FormControl('', Validators.required),
 			shortDescription: new FormControl('', Validators.required),
 			longDescription: new FormControl('', Validators.required),
 			unitPriceLKR: new FormControl('', Validators.required),
 			unitPriceUSD: new FormControl('', Validators.required),
-			measurementUnit: new FormControl('', Validators.required),
+			measurementUnit: new FormControl('', Validators.required)
+		});
+
+		this.imageFormGroup = new FormGroup({});
+
+		this.associationFormGroup = new FormGroup({
 			promotion: new FormControl(''),
 			stockAvailable: new FormControl(true),
 			showToCustomer: new FormControl(true),
@@ -47,59 +66,51 @@ export class ProductFormComponent implements OnInit {
 		});
 	}
 
-	saveSupplier(formValues: any) {
-		if (this.productForm.valid) {
-			console.log(formValues)
+	saveProduct(basicInfo: any, imageInfo: any, associateInfo: any) {
+		if (this.basicInforFormGroup.valid && this.associationFormGroup.valid && this.imageFormGroup.valid) {
+			const supplier: Supplier = new Supplier().deserialize(associateInfo.supplier);
+			const category: Category = new Category().deserialize(associateInfo.category);
+			const product: Product = new Product().deserialize(basicInfo);
+			product.category = category._id;
+			product.supplier = supplier._id;
+			product.showToCustomer = associateInfo.showToCustomer;
+			product.stockAvailable = associateInfo.stockAvailable;
+			product.promotions = associateInfo.promotion;
+
+			const formData = new FormData();
+			formData.append('product-image', this.files[0].data);
+			formData.append('productinfo', JSON.stringify(product));
+			this.productService.addProduct(formData).subscribe(data => {
+				this.openSnackBar('Product added successfully', 'OK');
+				this.resetForm();
+			}, error => {
+				this.openSnackBar('Product adding failed', 'OK');
+				console.log(error);
+			});
 		}
 	}
 
+	openSnackBar(message: string, action: string) {
+		this.snackBar.open(message, action, {
+		  duration: 2000,
+		});
+	  }
+
 	resetForm() {
-		this.productForm.reset();
+		this.basicInforFormGroup.reset();
+		this.imageFormGroup.reset();
+		this.associationFormGroup.reset();
 	}
 
 	onClick() {
-		const fileUpload = this.fileUpload.nativeElement; fileUpload.onchange = () => {
+		const fileUpload = this.fileUpload.nativeElement;
+		fileUpload.onchange = () => {
 			for (let index = 0; index < fileUpload.files.length; index++) {
 				const file = fileUpload.files[index];
 				this.files.push({ data: file, inProgress: false, progress: 0 });
 			}
-			this.uploadFiles();
 		};
 		fileUpload.click();
 	}
-
-	private uploadFiles() {
-		this.fileUpload.nativeElement.value = '';
-		this.files.forEach(file => {
-			this.uploadFile(file);
-		});
-	}
-
-	uploadFile(file) {
-		console.log(file);
-		/*const formData = new FormData();
-		formData.append('file', file.data);
-		file.inProgress = true;
-		this.uploadService.upload(formData).pipe(
-		  map(event => {
-			switch (event.type) {
-			  case HttpEventType.UploadProgress:
-				file.progress = Math.round(event.loaded * 100 / event.total);
-				break;
-			  case HttpEventType.Response:
-				return event;
-			}
-		  }),
-		  catchError((error: HttpErrorResponse) => {
-			file.inProgress = false;
-			return of(`${file.data.name} upload failed.`);
-		  })).subscribe((event: any) => {
-			if (typeof (event) === 'object') {
-			  console.log(event.body);
-			}
-		  });  */
-	}
-
-
 
 }

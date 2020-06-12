@@ -1,37 +1,31 @@
 <div class="container">
-  <div class="col">
-    <div class="row justify-content-end">
-      <!--New Category Button-->
-      <div class="float-right">
-        <button mat-flat-button color="primary">New</button>
-      </div>
-    </div>
-    <div class="row pt-5">
-      <div class="col-8">
-        <!--Category View-->
-        <mat-grid-list cols="3" rowHeight="1:2">
-          <mat-grid-tile>
-            <app-product-grid-item></app-product-grid-item>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <app-product-grid-item></app-product-grid-item>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <app-product-grid-item></app-product-grid-item>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <app-product-grid-item></app-product-grid-item>
-          </mat-grid-tile>
-        </mat-grid-list>
+	<mat-tab-group>
+		<mat-tab label="Add">
+			<h1>Add A New Product</h1>
+			<app-product-form></app-product-form>
+		</mat-tab>
 
+		<mat-tab label="View">
+			<h1>All Products</h1>
+			<mat-grid-list cols="3" rowHeight="1:2">
+				<mat-grid-tile>
+					<app-product-grid-item></app-product-grid-item>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<app-product-grid-item></app-product-grid-item>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<app-product-grid-item></app-product-grid-item>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<app-product-grid-item></app-product-grid-item>
+				</mat-grid-tile>
+			</mat-grid-list>
+		</mat-tab>
 
+		<mat-tab label="Search">
+			<h1>Search Products</h1>
 
-      </div>
-      <div class="col-4">
-        <!--Category Form-->
-        <app-product-form></app-product-form>
-      </div>
-    </div>
-  </div>
+		</mat-tab>
+	</mat-tab-group>
 </div>
-
