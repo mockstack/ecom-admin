@@ -9,7 +9,17 @@
           <input matInput required formControlName="productName">
         </mat-form-field>
         <br>
+
         <!--Product Image-->
+        <div>
+          <mat-label>Product Image</mat-label>
+          <button mat-button color="warn" (click)="onClick()">
+            <mat-icon>file_upload</mat-icon>
+            Upload
+          </button>
+          <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"
+            style="display:none;" />
+        </div>
 
         <mat-form-field appearance="fill">
           <mat-label>Short Description</mat-label>
