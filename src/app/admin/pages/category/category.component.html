@@ -1,20 +1,13 @@
 <div class="container">
-  <div class="col">
-    <div class="row justify-content-end">
-      <!--New Category Button-->
-      <div class="float-right">
-        <button mat-flat-button color="primary">New</button>
-      </div>
-    </div>
-    <div class="row pt-5">
-      <div class="col-8">
-        <!--Category View-->
-        <app-category-view></app-category-view>
-      </div>
-      <div class="col-4">
-        <!--Category Form-->
-        <app-category-form></app-category-form>
-      </div>
-    </div>
-  </div>
+	<mat-tab-group>
+		<mat-tab label="View">
+			<h1>Add A New Category</h1>
+			<app-category-view (categorySelect)="categorySelectEvent($event)"></app-category-view>
+		</mat-tab>
+
+		<mat-tab label="Add">
+			<h1>All Categories</h1>
+			<app-category-form [selectedCategory]="selectedCategory"></app-category-form>
+		</mat-tab>
+	</mat-tab-group>
 </div>

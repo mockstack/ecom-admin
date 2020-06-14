@@ -4,13 +4,25 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class SupplierService {
 
-  constructor(private httpClient: HttpClient) { }
+	private ROOT_URL = environment.apiUrl + 'supplier';
+	constructor(private httpClient: HttpClient) { }
 
-  public getAllSuppliers(): Observable<Object> {
-    return this.httpClient.get(environment.apiUrl + 'supplier');
-  }
+	/**
+	 * Get all suppliers.
+	 */
+	public getAllSuppliers(): Observable<Object> {
+		return this.httpClient.get(this.ROOT_URL);
+	}
+
+	/**
+	 * Add a new supplier.
+	 * @param data Supplier model
+	 */
+	public addSupplier(data: any): Observable<Object> {
+		return this.httpClient.post(this.ROOT_URL, data);
+	}
 }

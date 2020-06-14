@@ -5,15 +5,15 @@
 		<div class="example-container">
 			<mat-form-field appearance="fill">
 				<mat-label>Category Name</mat-label>
-				<input matInput required formControlName="title">
+				<input matInput required formControlName="name" value="{{selectedCategory.name}}">
 			</mat-form-field>
 			<br>
 			<mat-form-field appearance="fill">
 				<mat-label>Description</mat-label>
-				<textarea matInput required formControlName="description"></textarea>
+				<textarea matInput required formControlName="description" value="{{selectedCategory.description}}"></textarea>
 			</mat-form-field>
 			<br>
-			<mat-checkbox formControlName="active">Enable</mat-checkbox>
+			<mat-checkbox formControlName="active" [(ngModel)]="selectedCategory.active">Enable</mat-checkbox>
 		</div>
 		<mat-card-actions>
 			<button mat-button [disabled]="!categoryForm.valid">SAVE</button>

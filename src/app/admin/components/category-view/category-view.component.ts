@@ -1,27 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-export interface Category {
-  name: string;
-  description: string;
-  active: boolean;
-  _id: string;
-}
-
-const sourceData = [
-  {
-      "active": true,
-      "_id": "5ec5181fef27a33f88fc6c21",
-      "name": "Lubricants & Filters",
-      "description": "Lubricants and Filters for all kind of vehicles"
-  },
-  {
-      "active": false,
-      "_id": "5ed9efc16bba153d88135f43",
-      "name": "Grocery Items",
-      "description": "All grocerry items"
-  }
-];
+import { CategoryService } from 'src/app/common/ws/category.service';
+import { Category } from 'src/app/common/model/category';
 
 @Component({
   selector: 'app-category-view',
@@ -31,13 +11,33 @@ const sourceData = [
 export class CategoryViewComponent implements OnInit {
   displayColumns: string[] = ['name', 'description', 'active', 'action_edit', 'action_delete'];
 
-  dataSource = sourceData;
+  categoryList: Category[] = [];
+  selectedCategory: Category;
 
-  constructor(private snakBar: MatSnackBar) { }
+  @Output() categorySelect = new EventEmitter<any>();
 
-
+  constructor(private snakBar: MatSnackBar, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+	  this.categoryService.getProductCategories().subscribe((data: Category[])=>{
+		  this.categoryList = data;
+	  }, error => {
+		  this.openDialog(error, 'OK');
+	  })
+  }
+
+  editCategoryButtonClick(itemSelectEvent: any) {
+	  this.categorySelect.emit(itemSelectEvent);
+  }
+
+  deleteCategory(item: Category) {
+	  this.categoryService.deleteCategory(item._id).subscribe((data: Category) => {
+		  this.snakBar.open('Deleted successfully', 'OK');
+		  //remove the item from the list
+		  this.categoryList = this.categoryList.filter(item => item._id !== data._id)
+	  }, error => {
+		  this.snakBar.open('some error', 'OK');
+	  })
   }
 
   openDialog(action,obj) {
