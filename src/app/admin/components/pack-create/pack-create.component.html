@@ -15,7 +15,8 @@
 								<mat-label>{{product.name}}</mat-label>
 							</div>
 							<div class="col-2">
-								<button mat-button class="text-right" color="primary" (click)="addProductToPack(product)">
+								<button mat-button class="text-right" color="primary"
+									(click)="addProductToPack(product)">
 									<mat-icon>add_circle_outline</mat-icon>
 								</button>
 							</div>
@@ -27,13 +28,13 @@
 
 		<!--Added Items-->
 		<div class="col-6">
-			<div class="row" *ngFor="let item of selectedProducts">
+			<div class="row" *ngFor="let item of packItems">
 				<div class="col-8">
-					<mat-label>{{item.name}}</mat-label>
+					<mat-label>{{item.productName}}</mat-label>
 				</div>
 				<div class="col-2">
 					<mat-form-field>
-						<input matInput value="1" type="number">
+						<input matInput type="number"  min="0" max="100" [(ngModel)]="item.quantity">
 					</mat-form-field>
 				</div>
 				<div class="col-2">
@@ -42,8 +43,18 @@
 					</button>
 				</div>
 			</div>
-			<div class="row" *ngIf="selectedProducts.length > 0">
-				<button mat-flat-button color="primary">Save</button>
+			<div class="row" *ngIf="packItems.length > 0">
+				<mat-form-field appearance="fill">
+					<mat-label>Name</mat-label>
+					<input matInput [(ngModel)]="packName">
+				</mat-form-field>
+				<br>
+				<mat-form-field appearance="fill">
+					<mat-label>Description</mat-label>
+					<textarea matInput [(ngModel)]="packDescription"></textarea>
+				</mat-form-field>
+				<br>
+				<button mat-flat-button color="primary" (click)="savePack()">Save</button>
 			</div>
 		</div>
 
