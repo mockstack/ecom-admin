@@ -17,4 +17,12 @@ export class ProductGridItemComponent implements OnInit {
 
 	}
 
+	editProductInfo(item: Product) {
+		console.log(item);
+	}
+
+	viewProductInfo(item: Product) {
+		console.log(item);
+	}
+
 }
