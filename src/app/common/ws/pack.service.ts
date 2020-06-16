@@ -55,6 +55,6 @@ export class PackService {
 
 	/**Update a default pack */
 	public updateDefaultPack(body: any): Observable<object> {
-		return this.httpClient.put(this.pack + this.defaultPack, body);
+		return this.httpClient.put(this.pack + this.defaultPack + body._id, body);
 	}
 }

@@ -1,1 +1,25 @@
-<p>pack-view works!</p>
+<mat-expansion-panel *ngFor="let item of packList">
+	<mat-expansion-panel-header>
+		<mat-panel-title>
+			{{item.name}}
+		</mat-panel-title>
+		<mat-panel-description>
+			{{item.description}}
+		</mat-panel-description>
+	</mat-expansion-panel-header>
+
+	<div class="row" *ngFor="let packItem of item.packItems">
+		<div class="col-11">
+			<mat-form-field>
+				<mat-label>{{packItem.productId.name}}</mat-label>
+				<input matInput [(ngModel)]="packItem.quantity">
+			</mat-form-field>
+		</div>
+		<div class="col-1">
+			<button mat-button color="accent" (click)="deletePackItem(item, packItem)"><mat-icon>delete</mat-icon></button>
+		</div>
+	</div>
+
+	<button mat-button color="accent" (click)="deletePack(item)">Delete Pack</button>
+	<button mat-button color="warn" (click)="updatePack(item)">Update Pack</button>
+</mat-expansion-panel>
