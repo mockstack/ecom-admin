@@ -100,6 +100,7 @@ export class ProductFormComponent implements OnInit {
 		this.basicInforFormGroup.reset();
 		this.imageFormGroup.reset();
 		this.associationFormGroup.reset();
+		this.files = [];
 	}
 
 	onClick() {
