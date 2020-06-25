@@ -1,27 +1,24 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './common/ws/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ecom-admin';
+	title = 'ecom-admin';
 
-  constructor(private router: Router) {
+	constructor(private router: Router, private userService: UserService, private cookieService: CookieService) {
+	}
 
-  }
-
-  ngOnInit(): void {
-    const alreadyLoggedIn: boolean = true;
-    // validate the user session
-    // get the user role and forward to the correct dashboard
-    // currently we move to admin dashboard
-    if(alreadyLoggedIn) {
-      this.router.navigateByUrl('login');
-    } else {
-      this.router.navigateByUrl('login')
-    }
-  }
+	ngOnInit(): void {
+		this.userService.validateSession().subscribe(data => {
+			this.router.navigateByUrl('dashboard');
+		}, error => {
+			this.router.navigateByUrl('login')
+		})
+	}
 }

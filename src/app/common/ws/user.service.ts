@@ -14,7 +14,15 @@ export class UserService {
 	/**Login a user */
 	public login(userName: string, password: string): Observable<object> {
 		let login = { userName: userName, password: password };
-		return this.httpClient.post(environment.apiUrl + this.PREFIX + '/login', login);
+		return this.httpClient.post(environment.apiUrl + this.PREFIX + '/login', login, { withCredentials: true });
+	}
+
+	public validateSession(): Observable<object> {
+		return this.httpClient.get(environment.apiUrl + this.PREFIX + '/validSession', { withCredentials: true });
+	}
+
+	public logout(): Observable<object> {
+		return this.httpClient.post(environment.apiUrl + this.PREFIX + '/logout', undefined, { withCredentials: true });
 	}
 
 }

@@ -5,13 +5,16 @@
 		</button>
 		<h1>Administration</h1>
 		<span class="menu-spacer"></span>
+		<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
+			<mat-icon>logout</mat-icon>
+		</button>
 	</mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container>
 	<mat-sidenav #sidenav>
 		<mat-nav-list>
-      <mat-list-item>
+			<mat-list-item>
 				<mat-icon mat-list-icon>dashboard</mat-icon>
 				<a mat-list-item [routerLink]="'/dashboard'" (click)="sidenav.toggle()"> Dashboard </a>
 			</mat-list-item>
@@ -20,19 +23,19 @@
 				<a mat-list-item [routerLink]="'/product'" (click)="sidenav.toggle()"> Products </a>
 			</mat-list-item>
 			<mat-list-item>
-        <mat-icon>category</mat-icon>
+				<mat-icon>category</mat-icon>
 				<a mat-list-item [routerLink]="'/category'" (click)="sidenav.toggle()"> Categories </a>
 			</mat-list-item>
 			<mat-list-item>
-        <mat-icon>playlist_add_check</mat-icon>
+				<mat-icon>playlist_add_check</mat-icon>
 				<a mat-list-item [routerLink]="'/pack'" (click)="sidenav.toggle()"> Packs </a>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>local_shipping</mat-icon>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon>local_shipping</mat-icon>
 				<a mat-list-item [routerLink]="'/supplier'" (click)="sidenav.toggle()"> Supplier </a>
 			</mat-list-item>
 			<mat-list-item>
-        <mat-icon>close</mat-icon>
+				<mat-icon>close</mat-icon>
 				<a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
 			</mat-list-item>
 		</mat-nav-list>

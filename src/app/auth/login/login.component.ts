@@ -5,6 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import { CryptoService } from 'src/app/common/data-service/crypto.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
 	selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 	error: string;
 
 	constructor(private userService: UserService, private cryptoService: CryptoService,
-		private router: Router) { }
+		private router: Router, private cookieService: CookieService) { }
 
 	ngOnInit() {
 		this.loginForm = new FormGroup({
