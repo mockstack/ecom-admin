@@ -1,15 +1,26 @@
-<form class="form-signin">
-	<img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-	<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-	<label for="inputEmail" class="sr-only">Email address</label>
-	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-	<label for="inputPassword" class="sr-only">Password</label>
-	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-	<div class="checkbox mb-3">
-		<label>
-			<input type="checkbox" value="remember-me"> Remember me
-		</label>
+<mat-card class="bg-light">
+	<div class="text-center pb-2">
+		<img src="./assets/image/logo.png" class="rounded" alt="..." width="204px" height="49px">
 	</div>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	<p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
-</form>
+	<!--<mat-card-title>Login</mat-card-title>-->
+	<mat-card-content>
+		<form [formGroup]="loginForm" (ngSubmit)="submit()">
+			<p>
+				<mat-form-field>
+					<input type="text" matInput placeholder="Username" formControlName="username">
+				</mat-form-field>
+			</p>
+			<p>
+				<mat-form-field>
+					<input type="password" matInput placeholder="Password" formControlName="password">
+				</mat-form-field>
+			</p>
+			<p *ngIf="error" class="error">
+				{{ error }}
+			</p>
+			<div class="button">
+				<button type="submit" mat-button>Login</button>
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>
