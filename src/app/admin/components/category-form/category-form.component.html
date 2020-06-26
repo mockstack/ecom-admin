@@ -5,13 +5,12 @@
 			<div class="example-container">
 				<mat-form-field appearance="fill">
 					<mat-label>Category Name</mat-label>
-					<input matInput required formControlName="name" [ngModelOptions]="{standalone: true}"
-						[(ngModel)]="selectedCategory.name">
+					<input matInput required formControlName="name" [(ngModel)]="selectedCategory.name">
 				</mat-form-field>
 				<br>
 				<mat-form-field appearance="fill">
 					<mat-label>Description</mat-label>
-					<textarea matInput required formControlName="description" [ngModelOptions]="{standalone: true}"
+					<textarea matInput required formControlName="description"
 						[(ngModel)]="selectedCategory.description"></textarea>
 				</mat-form-field>
 				<br>

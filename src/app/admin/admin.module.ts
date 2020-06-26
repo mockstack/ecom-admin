@@ -64,6 +64,7 @@ import { PackViewComponent } from './components/pack-view/pack-view.component';
 import { ProductCategoryFilterPipe } from './pipe/product-category-filter.pipe';
 import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
 	declarations: [
@@ -89,6 +90,7 @@ import { CategoryListComponent } from './components/category-list/category-list.
 		CommonModule,
 		AdminRoutingModule,
 		FormsModule,
+		BrowserModule,
 		A11yModule,
 		ClipboardModule,
 		CdkStepperModule,

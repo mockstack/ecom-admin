@@ -17,13 +17,13 @@
 
 				<mat-form-field appearance="fill">
 					<mat-label>Contact Name</mat-label>
-					<input matInput required formControlName="name" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact_name">
+					<input matInput required formControlName="name" [(ngModel)]="selectedSupplier.contact_name">
 				</mat-form-field>
 				<br>
 
 				<mat-form-field appearance="fill">
 					<mat-label>Company Name</mat-label>
-					<input matInput required formControlName="company" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.company_name">
+					<input matInput required formControlName="company" [(ngModel)]="selectedSupplier.company_name">
 				</mat-form-field>
 				<br>
 
@@ -36,25 +36,27 @@
 
 				<mat-form-field appearance="fill">
 					<mat-label>Telephone Number</mat-label>
-					<input matInput required formControlName="telephone" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact.telephone">
+					<input matInput required formControlName="telephone"
+						[(ngModel)]="selectedSupplier.contact.telephone">
 				</mat-form-field>
 				<br>
 
 				<mat-form-field appearance="fill">
 					<mat-label>Email</mat-label>
-					<input matInput required formControlName="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact.email">
+					<input matInput required formControlName="email" [(ngModel)]="selectedSupplier.contact.email">
 				</mat-form-field>
 				<br>
 
 				<mat-form-field appearance="fill">
 					<mat-label>Fax</mat-label>
-					<input matInput formControlName="fax" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact.fax">
+					<input matInput formControlName="fax" [(ngModel)]="selectedSupplier.contact.fax">
 				</mat-form-field>
 				<br>
 
 				<mat-form-field appearance="fill">
 					<mat-label>Postal Code</mat-label>
-					<input matInput required formControlName="postalcode" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact.postal_code">
+					<input matInput required formControlName="postalcode"
+						[(ngModel)]="selectedSupplier.contact.postal_code">
 				</mat-form-field>
 				<br>
 
@@ -67,7 +69,8 @@
 
 				<mat-form-field appearance="fill">
 					<mat-label>District</mat-label>
-					<mat-select required formControlName="district" [(ngModel)]="selectedSupplier.contact.location.district">
+					<mat-select required formControlName="district"
+						[(ngModel)]="selectedSupplier.contact.location.district">
 						<mat-option *ngFor="let item of DISTRICTS" [value]="item.value">{{item.name}}</mat-option>
 					</mat-select>
 				</mat-form-field>
@@ -75,13 +78,15 @@
 
 				<mat-form-field appearance="fill">
 					<mat-label>City</mat-label>
-					<input matInput required formControlName="city" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact.location.city">
+					<input matInput required formControlName="city"
+						[(ngModel)]="selectedSupplier.contact.location.city">
 				</mat-form-field>
 				<br>
 
 				<mat-form-field appearance="fill">
 					<mat-label>Address</mat-label>
-					<input matInput required formControlName="address" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedSupplier.contact.location.address">
+					<input matInput required formControlName="address"
+						[(ngModel)]="selectedSupplier.contact.location.address">
 				</mat-form-field>
 				<br>
 
