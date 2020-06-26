@@ -40,7 +40,8 @@
 					<mat-form-field appearance="fill">
 						<mat-label>Measurement Unit</mat-label>
 						<mat-select formControlName="measurementUnit">
-							<mat-option *ngFor="let item of mesurementUnits" [value]="item.value">{{item.name}}</mat-option>
+							<mat-option *ngFor="let item of mesurementUnits" [value]="item.value">{{item.name}}
+							</mat-option>
 						</mat-select>
 					</mat-form-field>
 					<br>
@@ -49,7 +50,7 @@
 
 			<!--Footer-->
 			<div>
-				<button mat-button matStepperNext>Next</button>
+				<button mat-raised-button matStepperNext color="primary">Next</button>
 			</div>
 		</form>
 	</mat-step>
@@ -61,7 +62,7 @@
 			<!--form content-->
 			<div>
 				<mat-label>Product Image</mat-label>
-				<button mat-button color="warn" (click)="onClick()">
+				<button mat-raised-button color="warn" (click)="onClick()">
 					<mat-icon>file_upload</mat-icon>
 					Upload
 				</button>
@@ -70,8 +71,8 @@
 			</div>
 			<!--Footer-->
 			<div>
-				<button mat-button matStepperPrevious>Back</button>
-				<button mat-button matStepperNext>Next</button>
+				<button mat-raised-button matStepperPrevious color="primary">Back</button>
+				<button mat-raised-button matStepperNext color="primary">Next</button>
 			</div>
 		</form>
 	</mat-step>
@@ -114,9 +115,10 @@
 			<ng-template matStepLabel>Done</ng-template>
 			<p>You are now done.</p>
 			<div>
-				<button mat-button matStepperPrevious>Back</button>
-				<button mat-button (click)="productAddStepper.reset()">Reset</button>
-				<button mat-button color="warn" (click)="saveProduct(basicInforFormGroup.value,imageFormGroup.value, associationFormGroup.value)">Complete</button>
+				<button mat-raised-button matStepperPrevious color="primary">Back</button>
+				<button mat-raised-button color="primary" (click)="productAddStepper.reset()">Reset</button>
+				<button mat-raised-button color="warn"
+					(click)="saveProduct(basicInforFormGroup.value,imageFormGroup.value, associationFormGroup.value)">Complete</button>
 			</div>
 		</form>
 	</mat-step>

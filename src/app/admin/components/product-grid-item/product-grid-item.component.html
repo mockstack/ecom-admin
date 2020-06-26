@@ -1,20 +1,24 @@
-<mat-card class="example-card">
-  <mat-card-header>
-	<mat-card-title>{{item.name}}</mat-card-title>
-	<mat-card-subtitle>{{item.unit_price}}/{{item.measurementUnit}}</mat-card-subtitle>
-  </mat-card-header>
-  <div class="text-center">
-	<img mat-card-lg-image *ngIf="item.thumbImage !== undefined" src="{{environment.apiUrl}}{{item.thumbImage}}" alt="photo">
-	<img mat-card-lg-image *ngIf="item.thumbImage === undefined" src="assets/image/no-image.png" alt="photo">
-  </div>
+<mat-card class="example-card m-1">
+	<mat-card-header>
+		<mat-card-title>{{item.name}}</mat-card-title>
+		<mat-card-subtitle>{{item.unit_price_lkr}}/{{item.measurementUnit}}</mat-card-subtitle>
+	</mat-card-header>
+	<!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+	<img mat-card-md-image class="mx-auto d-block" *ngIf="item.thumbImage !== undefined"
+		src="{{environment.apiUrl}}{{item.thumbImage}}" alt="photo">
+	<img mat-card-md-image class="mx-auto d-block" *ngIf="item.thumbImage === undefined" src="assets/image/no-image.png"
+		alt="photo">
 
-  <mat-card-content>
-    <p>
-      {{item.short_desc}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="editProductInfo(item)">Edit</button>
-    <button mat-button (click)="viewProductInfo(item)">View</button>
-  </mat-card-actions>
+	<mat-card-content class="card-content">
+		<p>
+			{{item.short_desc}}
+		</p>
+	</mat-card-content>
+	<mat-card-footer class="m-0">
+		<mat-card-actions>
+			<button mat-raised-button color="primary" (click)="editProductInfo(item)">Edit</button>
+			<button mat-raised-button color="primary" (click)="viewProductInfo(item)">View</button>
+		</mat-card-actions>
+	</mat-card-footer>
+
 </mat-card>
