@@ -1,0 +1,4 @@
+<p>Selecte the supplier to edit</p>
+<div class="p-0" *ngFor="let supplier of supplierList">
+	<button mat-raised-button color="primary" (click)="loadSupplierData(supplier)">{{supplier.company_name}}</button>
+</div>

@@ -7,7 +7,18 @@
 
 		<mat-tab label="Add">
 			<h1>Add Supplier</h1>
-			<app-supplier-form></app-supplier-form>
+			<app-supplier-form [forEdit]="'false'"></app-supplier-form>
+		</mat-tab>
+		<mat-tab label="Edit">
+			<h1>Edit Supplier</h1>
+			<div class="row">
+				<div class="col-4">
+					<app-supplier-list></app-supplier-list>
+				</div>
+				<div class="col-8">
+					<app-supplier-form [forEdit]="'true'"></app-supplier-form>
+				</div>
+			</div>
 		</mat-tab>
 	</mat-tab-group>
 </div>

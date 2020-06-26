@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SupplierService } from 'src/app/common/ws/supplier.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,11 +17,16 @@ export class SupplierFormComponent implements OnInit {
 	TITLES = [{ name: 'Mr', value: 'Mr' }, { name: 'Miss', value: 'Miss' }, { name: 'Ms', value: 'Ms' }, { name: 'Mrs', value: 'Mrs' }];
 	DISTRICTS = [{ name: 'Kalutara', value: 'Kalutara' }, { name: 'Colombo', value: 'Colombo' }, { name: 'Gampaha', value: 'Gampaha' }];
 
-	supplierForm: FormGroup;
-	selectedSupplier: Supplier = new Supplier();
+	public supplierForm: FormGroup;
+	public selectedSupplier: Supplier;
+	@Input() forEdit: Boolean = false;
 
 	constructor(private supplierService: SupplierService, private snackBar: MatSnackBar,
-		private supplierDataService: SupplierDataServiceService) { }
+		private supplierDataService: SupplierDataServiceService) {
+		this.selectedSupplier = new Supplier();
+		this.selectedSupplier.contact = new Contact();
+		this.selectedSupplier.contact.location = new Location();
+	}
 
 	ngOnInit(): void {
 		this.supplierForm = new FormGroup({
@@ -40,39 +45,51 @@ export class SupplierFormComponent implements OnInit {
 		this.selectedSupplier.contact_name = ''
 
 		this.supplierDataService.selectionStatus.subscribe((data: Supplier) => {
-			this.selectedSupplier = this.supplierDataService.selectedSupplier;
+			if (data !== undefined) {
+				console.log('item selected' + JSON.stringify(data))
+				this.selectedSupplier = this.supplierDataService.selectedSupplier;
+			}
 		}, error => {
 			console.log(JSON.stringify(error));
 		});
 	}
 
 	saveSupplier(formValues: any) {
-		if (this.supplierForm.valid) {
-			let location = new Location();
-			location.address = formValues.address;
-			location.city = formValues.city;
-			location.district = formValues.district;
-
-			let contact = new Contact();
-			contact.email = formValues.email;
-			contact.fax = formValues.fax;
-			contact.postal_code = formValues.postalcode;
-			contact.telephone = formValues.telephone;
-			contact.location = location;
-
-			let supplier = new Supplier();
-			supplier.company_name = formValues.company;
-			supplier.contact_title = formValues.title;
-			supplier.contact_name = formValues.name;
-			supplier.contact = contact;
-
-			console.log(supplier)
-			this.supplierService.addSupplier(supplier).subscribe(data => {
-				this.snackBar.open('Successfully added the supplier', 'OK');
-				this.resetForm();
+		console.log('forEdit=' + this.forEdit);
+		if (this.forEdit) {
+			this.supplierService.updateSupplier(this.selectedSupplier).subscribe(data => {
+				this.snackBar.open("Successfullyupdated the supplier", "OK")
 			}, error => {
-				this.snackBar.open('Cannot add the supplier', 'OK');
+				this.snackBar.open("Cannot update", "OK")
 			});
+		} else {
+			if (this.supplierForm.valid) {
+				let location = new Location();
+				location.address = formValues.address;
+				location.city = formValues.city;
+				location.district = formValues.district;
+
+				let contact = new Contact();
+				contact.email = formValues.email;
+				contact.fax = formValues.fax;
+				contact.postal_code = formValues.postalcode;
+				contact.telephone = formValues.telephone;
+				contact.location = location;
+
+				let supplier = new Supplier();
+				supplier.company_name = formValues.company;
+				supplier.contact_title = formValues.title;
+				supplier.contact_name = formValues.name;
+				supplier.contact = contact;
+
+				console.log(supplier)
+				this.supplierService.addSupplier(supplier).subscribe(data => {
+					this.snackBar.open('Successfully added the supplier', 'OK');
+					this.resetForm();
+				}, error => {
+					this.snackBar.open('Cannot add the supplier', 'OK');
+				});
+			}
 		}
 	}
 
