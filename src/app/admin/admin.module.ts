@@ -88,7 +88,7 @@ import { CategoryListComponent } from './components/category-list/category-list.
 	imports: [
 		CommonModule,
 		AdminRoutingModule,
-
+		FormsModule,
 		A11yModule,
 		ClipboardModule,
 		CdkStepperModule,
@@ -132,8 +132,7 @@ import { CategoryListComponent } from './components/category-list/category-list.
 		MatTreeModule,
 		PortalModule,
 		ScrollingModule,
-		ReactiveFormsModule,
-		FormsModule
+		ReactiveFormsModule
 	], exports: [
 		A11yModule,
 		ClipboardModule,

@@ -13,9 +13,8 @@ import { CategoryDataServiceService } from 'src/app/common/data-service/category
 })
 export class CategoryFormComponent implements OnInit {
 	public categoryForm: FormGroup;
-	@Input() selectedCategory: Category;
+	public selectedCategory: Category;
 	@Input() forEdit: Boolean = false;
-	categoryName: string = '';
 
 	constructor(private categoryService: CategoryService, private snackBar: MatSnackBar,
 		private categoryDataService: CategoryDataServiceService) {
@@ -28,10 +27,6 @@ export class CategoryFormComponent implements OnInit {
 			description: new FormControl('', Validators.required),
 			active: new FormControl()
 		});
-
-		if (this.selectedCategory !== undefined) {
-			this.categoryName = this.selectedCategory.name;
-		}
 
 		this.categoryDataService.selectionStatus.subscribe((data: Category) => {
 			if (data !== undefined) {
