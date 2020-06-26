@@ -3,7 +3,6 @@
 	<mat-step [stepControl]="basicInforFormGroup">
 		<form [formGroup]="basicInforFormGroup">
 			<ng-template matStepLabel>Product Information</ng-template>
-			<!--form content-->
 			<div class="row">
 				<div class="col-6">
 					<mat-form-field appearance="fill">
@@ -48,8 +47,7 @@
 				</div>
 			</div>
 
-			<!--Footer-->
-			<div>
+			<div class="p-5">
 				<button mat-raised-button matStepperNext color="primary">Next</button>
 			</div>
 		</form>
@@ -60,9 +58,9 @@
 		<form [formGroup]="imageFormGroup">
 			<ng-template matStepLabel>Product Image</ng-template>
 			<!--form content-->
-			<div>
+			<div class="m-3">
 				<mat-label>Product Image</mat-label>
-				<button mat-raised-button color="warn" (click)="onClick()">
+				<button class="ml-2" mat-raised-button color="warn" (click)="onClick()">
 					<mat-icon>file_upload</mat-icon>
 					Upload
 				</button>
@@ -70,8 +68,8 @@
 					style="display:none;" />
 			</div>
 			<!--Footer-->
-			<div>
-				<button mat-raised-button matStepperPrevious color="primary">Back</button>
+			<div class="p-5">
+				<button mat-raised-button matStepperPrevious color="primary" class="mr-3">Back</button>
 				<button mat-raised-button matStepperNext color="primary">Next</button>
 			</div>
 		</form>
@@ -114,9 +112,9 @@
 			<!--Footer-->
 			<ng-template matStepLabel>Done</ng-template>
 			<p>You are now done.</p>
-			<div>
-				<button mat-raised-button matStepperPrevious color="primary">Back</button>
-				<button mat-raised-button color="primary" (click)="productAddStepper.reset()">Reset</button>
+			<div class="p-5">
+				<button mat-raised-button class="mr-3" matStepperPrevious color="primary">Back</button>
+				<button mat-raised-button class="mr-3" color="primary" (click)="productAddStepper.reset()">Reset</button>
 				<button mat-raised-button color="warn"
 					(click)="saveProduct(basicInforFormGroup.value,imageFormGroup.value, associationFormGroup.value)">Complete</button>
 			</div>
