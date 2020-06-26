@@ -12,14 +12,14 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-	<mat-sidenav #sidenav>
+	<mat-sidenav #sidenav [position]="'start'" [mode]="'push'">
 		<mat-nav-list>
 			<mat-list-item>
-				<mat-icon mat-list-icon>dashboard</mat-icon>
+				<mat-icon>dashboard</mat-icon>
 				<a mat-list-item [routerLink]="'/dashboard'" (click)="sidenav.toggle()"> Dashboard </a>
 			</mat-list-item>
 			<mat-list-item>
-				<mat-icon mat-list-icon>shopping_basket</mat-icon>
+				<mat-icon>shopping_basket</mat-icon>
 				<a mat-list-item [routerLink]="'/product'" (click)="sidenav.toggle()"> Products </a>
 			</mat-list-item>
 			<mat-list-item>
@@ -34,10 +34,11 @@
 				<mat-icon>local_shipping</mat-icon>
 				<a mat-list-item [routerLink]="'/supplier'" (click)="sidenav.toggle()"> Supplier </a>
 			</mat-list-item>
-			<mat-list-item>
+			<hr>
+			<!--<mat-list-item>
 				<mat-icon>close</mat-icon>
 				<a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-			</mat-list-item>
+			</mat-list-item>-->
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
