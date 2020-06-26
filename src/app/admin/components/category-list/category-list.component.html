@@ -1,0 +1,4 @@
+<p>Selecte a supplier to edit</p>
+<div class="pb-1" *ngFor="let category of categoryList">
+	<button class="w-100 text-left" mat-raised-button color="primary" (click)="loadSupplierData(category)">{{category.name}}</button>
+</div>

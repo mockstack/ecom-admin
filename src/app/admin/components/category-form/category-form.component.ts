@@ -4,6 +4,7 @@ import { Category } from 'src/app/common/model/category';
 import { CategoryService } from 'src/app/common/ws/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { CategoryDataServiceService } from 'src/app/common/data-service/category-data-service.service';
 
 @Component({
 	selector: 'app-category-form',
@@ -14,11 +15,15 @@ export class CategoryFormComponent implements OnInit {
 	public categoryForm: FormGroup;
 	// get the selected category
 	@Input() selectedCategory: Category;
+	@Input() forEdit: Boolean = false;
 	// publish category modifications.
 	@Output() categoryModified = new EventEmitter<any>();
 	categoryName: string = '';
 
-	constructor(private categoryService: CategoryService, private snackBar: MatSnackBar) { }
+	constructor(private categoryService: CategoryService, private snackBar: MatSnackBar,
+		private categoryDataService: CategoryDataServiceService) {
+		this.selectedCategory = new Category();
+	}
 
 	ngOnInit(): void {
 		this.categoryForm = new FormGroup({
@@ -31,17 +36,22 @@ export class CategoryFormComponent implements OnInit {
 			this.categoryName = this.selectedCategory.name;
 		}
 
+		this.categoryDataService.selectionStatus.subscribe((data: Category) => {
+			if (data !== undefined) {
+				this.selectedCategory = data;
+			}
+		}, error => { })
+
 	}
 
 	saveCategory(formValues: any) {
 		if (this.categoryForm.valid) {
-			console.log(formValues)
-			if (this.selectedCategory._id !== undefined) {
+			if (this.forEdit) {
 				//update
 				formValues._id = this.selectedCategory._id;
 				this.categoryService.updateCategory(formValues).subscribe(data => {
-					this.showSnackBar('Category added successfully', 'OK');
-					this.categoryModified.emit()
+					this.showSnackBar('Category updated successfully', 'OK');
+					this.categoryDataService.dataSetModified = true;
 				}, error => {
 					this.snackBar.open(error.error.errmsg, 'OK');
 				});
@@ -49,13 +59,15 @@ export class CategoryFormComponent implements OnInit {
 				//insert
 				this.categoryService.addCategory(formValues).subscribe(data => {
 					this.showSnackBar('Category added successfully', 'OK');
-					this.categoryModified.emit()
+					this.categoryDataService.dataSetModified = true;
 				}, error => {
 					this.snackBar.open(error.error.errmsg, 'OK');
 				});
 			}
-
+		} else {
+			this.showSnackBar('Cannot update, invalid form data', 'OK');
 		}
+
 	}
 
 

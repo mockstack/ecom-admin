@@ -63,6 +63,7 @@ import { PackCreateComponent } from './components/pack-create/pack-create.compon
 import { PackViewComponent } from './components/pack-view/pack-view.component';
 import { ProductCategoryFilterPipe } from './pipe/product-category-filter.pipe';
 import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
 
 @NgModule({
 	declarations: [
@@ -82,7 +83,8 @@ import { SupplierListComponent } from './components/supplier-list/supplier-list.
 		PackCreateComponent,
 		PackViewComponent,
 		ProductCategoryFilterPipe,
-		SupplierListComponent],
+		SupplierListComponent,
+		CategoryListComponent],
 	imports: [
 		CommonModule,
 		AdminRoutingModule,
