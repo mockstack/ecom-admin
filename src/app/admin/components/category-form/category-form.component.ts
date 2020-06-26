@@ -13,11 +13,8 @@ import { CategoryDataServiceService } from 'src/app/common/data-service/category
 })
 export class CategoryFormComponent implements OnInit {
 	public categoryForm: FormGroup;
-	// get the selected category
 	@Input() selectedCategory: Category;
 	@Input() forEdit: Boolean = false;
-	// publish category modifications.
-	@Output() categoryModified = new EventEmitter<any>();
 	categoryName: string = '';
 
 	constructor(private categoryService: CategoryService, private snackBar: MatSnackBar,
