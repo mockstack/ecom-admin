@@ -58,6 +58,7 @@ export class SupplierFormComponent implements OnInit {
 		console.log('forEdit=' + this.forEdit);
 		if (this.forEdit) {
 			this.supplierService.updateSupplier(this.selectedSupplier).subscribe(data => {
+				this.supplierDataService.dataSetModified = true;
 				this.snackBar.open("Successfullyupdated the supplier", "OK")
 			}, error => {
 				this.snackBar.open("Cannot update", "OK")
@@ -84,6 +85,7 @@ export class SupplierFormComponent implements OnInit {
 
 				console.log(supplier)
 				this.supplierService.addSupplier(supplier).subscribe(data => {
+					this.supplierDataService.dataSetModified = true;
 					this.snackBar.open('Successfully added the supplier', 'OK');
 					this.resetForm();
 				}, error => {

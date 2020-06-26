@@ -10,19 +10,26 @@ import { SupplierDataServiceService } from 'src/app/common/data-service/supplier
 	styleUrls: ['./supplier-view.component.scss']
 })
 export class SupplierViewComponent implements OnInit {
-	displayColumns: string[] = ['contact_title', 'contact_name', 'company_name', 'action_edit', 'action_delete'];
-
+	//displayColumns: string[] = ['contact_title', 'contact_name', 'company_name', 'action_edit', 'action_delete'];
+	displayColumns: string[] = ['contact_title', 'contact_name', 'company_name', 'action_delete'];
 	supplierList: Supplier[] = [];
 
 	constructor(private snakBar: MatSnackBar, private supplierService: SupplierService,
 		private snackBar: MatSnackBar, private supplierDataService: SupplierDataServiceService) { }
 
 	ngOnInit(): void {
+		this.getAllSuppliers();
+		this.supplierDataService.dataSetModifiedStatus.subscribe(data => {
+			this.getAllSuppliers();
+		});
+	}
+
+	getAllSuppliers() {
 		this.supplierService.getAllSuppliers().subscribe((data: Supplier[]) => {
 			this.supplierList = data;
 		}, error => {
 			this.snakBar.open('Cannot load suppliers', "OK");
-		})
+		});
 	}
 
 	editSupplier(supplier: Supplier) {

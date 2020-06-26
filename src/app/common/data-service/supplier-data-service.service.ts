@@ -8,9 +8,12 @@ import { BehaviorSubject } from 'rxjs';
 export class SupplierDataServiceService {
 
 	private _selectedSupplier: Supplier;
+	private _dataSetModified: Boolean;
 
+	private dataModifiedNotifier = new BehaviorSubject(this._dataSetModified);
 	private notifier = new BehaviorSubject(this._selectedSupplier);
 	public selectionStatus = this.notifier.asObservable();
+	public dataSetModifiedStatus = this.dataModifiedNotifier.asObservable();
 
 	constructor() { }
 
@@ -21,5 +24,10 @@ export class SupplierDataServiceService {
 	public set selectedSupplier(supplier: Supplier) {
 		this._selectedSupplier = supplier;
 		this.notifier.next(supplier);
+	}
+
+	public set dataSetModified(status: Boolean) {
+		this._dataSetModified = status;
+		this.dataModifiedNotifier.next(status);
 	}
 }
