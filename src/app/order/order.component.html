@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+	<mat-toolbar-row>
+		<button mat-icon-button>
+			<mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+		</button>
+		<h1>Orders</h1>
+		<span class="menu-spacer"></span>
+		<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
+			<mat-icon>logout</mat-icon>
+		</button>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+	<mat-sidenav #sidenav [position]="'start'" [mode]="'push'">
+		<mat-nav-list>
+			<mat-list-item>
+				<mat-icon>list_alt</mat-icon>
+				<a mat-list-item [routerLink]="'/orders'" (click)="sidenav.toggle()"> Orders </a>
+			</mat-list-item>
+			<hr>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<div style="height: 88vh;">
+			<router-outlet class="p-5"></router-outlet>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

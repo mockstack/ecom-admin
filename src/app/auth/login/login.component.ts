@@ -31,8 +31,14 @@ export class LoginComponent implements OnInit {
 
 			let name = this.loginForm.value.username;
 			let pw = this.cryptoService.set(environment.key, this.loginForm.value.password);
-			this.userService.login(name, pw).subscribe(data => {
-				this.router.navigateByUrl('dashboard')
+			this.userService.login(name, pw).subscribe((data: any) => {
+				console.log(data)
+				if (data.user.role === 'ADMIN') {
+					this.router.navigateByUrl('dashboard')
+				} else if (data.user.role === 'ORDER') {
+					this.router.navigateByUrl('odashboard')
+				}
+
 			}, error => {
 				this.error = error.error;
 			});

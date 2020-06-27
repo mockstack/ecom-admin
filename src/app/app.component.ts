@@ -15,8 +15,13 @@ export class AppComponent {
 	}
 
 	ngOnInit(): void {
-		this.userService.validateSession().subscribe(data => {
-			this.router.navigateByUrl('dashboard');
+		this.userService.validateSession().subscribe((data: any) => {
+			console.log(data)
+			if (data.user.role === 'ADMIN') {
+				this.router.navigateByUrl('dashboard')
+			} else if (data.user.role === 'ORDER') {
+				this.router.navigateByUrl('odashboard')
+			}
 		}, error => {
 			this.router.navigateByUrl('login')
 		})

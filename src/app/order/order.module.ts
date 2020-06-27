@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AdminRoutingModule } from './admin-routing.module';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+import { OrderComponent } from './order.component';
+import { OrderDashboardComponent } from './pages/order-dashboard/order-dashboard.component';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -47,47 +45,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductComponent } from './pages/product/product.component';
-import { PackComponent } from './pages/pack/pack.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { AdminComponent } from './admin.component';
-import { CategoryViewComponent } from './components/category-view/category-view.component';
-import { CategoryFormComponent } from './components/category-form/category-form.component';
-import { SupplierComponent } from './pages/supplier/supplier.component';
-import { SupplierFormComponent } from './components/supplier-form/supplier-form.component';
-import { SupplierViewComponent } from './components/supplier-view/supplier-view.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
-import { ProductGridItemComponent } from './components/product-grid-item/product-grid-item.component';
-import { ProductGridViewComponent } from './components/product-grid-view/product-grid-view.component';
-import { PackCreateComponent } from './components/pack-create/pack-create.component';
-import { PackViewComponent } from './components/pack-view/pack-view.component';
-import { ProductCategoryFilterPipe } from './pipe/product-category-filter.pipe';
-import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
+import { OrderRoutingModule } from './order-routing.module';
+import { OrderViewComponent } from './pages/order-view/order-view.component';
+
 
 @NgModule({
-	declarations: [
-		DashboardComponent,
-		ProductComponent,
-		PackComponent,
-		CategoryComponent,
-		AdminComponent,
-		CategoryViewComponent,
-		CategoryFormComponent,
-		SupplierComponent,
-		SupplierFormComponent,
-		SupplierViewComponent,
-		ProductFormComponent,
-		ProductGridItemComponent,
-		ProductGridViewComponent,
-		PackCreateComponent,
-		PackViewComponent,
-		ProductCategoryFilterPipe,
-		SupplierListComponent,
-		CategoryListComponent],
+	declarations: [OrderComponent, OrderDashboardComponent, OrderViewComponent],
 	imports: [
 		CommonModule,
-		AdminRoutingModule,
+		OrderRoutingModule,
 		FormsModule,
 		A11yModule,
 		ClipboardModule,
@@ -133,52 +99,6 @@ import { CategoryListComponent } from './components/category-list/category-list.
 		PortalModule,
 		ScrollingModule,
 		ReactiveFormsModule
-	], exports: [
-		A11yModule,
-		ClipboardModule,
-		CdkStepperModule,
-		CdkTableModule,
-		CdkTreeModule,
-		DragDropModule,
-		MatAutocompleteModule,
-		MatBadgeModule,
-		MatBottomSheetModule,
-		MatButtonModule,
-		MatButtonToggleModule,
-		MatCardModule,
-		MatCheckboxModule,
-		MatChipsModule,
-		MatStepperModule,
-		MatDatepickerModule,
-		MatDialogModule,
-		MatDividerModule,
-		MatExpansionModule,
-		MatGridListModule,
-		MatIconModule,
-		MatInputModule,
-		MatListModule,
-		MatMenuModule,
-		MatNativeDateModule,
-		MatPaginatorModule,
-		MatProgressBarModule,
-		MatProgressSpinnerModule,
-		MatRadioModule,
-		MatRippleModule,
-		MatSelectModule,
-		MatSidenavModule,
-		MatSliderModule,
-		MatSlideToggleModule,
-		MatSnackBarModule,
-		MatSortModule,
-		MatTableModule,
-		MatTabsModule,
-		MatToolbarModule,
-		MatTooltipModule,
-		MatTreeModule,
-		PortalModule,
-		ScrollingModule,
-		ReactiveFormsModule,
-		FormsModule
 	]
 })
-export class AdminModule { }
+export class OrderModule { }
