@@ -64,6 +64,7 @@ import { PackViewComponent } from './components/pack-view/pack-view.component';
 import { ProductCategoryFilterPipe } from './pipe/product-category-filter.pipe';
 import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
 	declarations: [
@@ -84,7 +85,8 @@ import { CategoryListComponent } from './components/category-list/category-list.
 		PackViewComponent,
 		ProductCategoryFilterPipe,
 		SupplierListComponent,
-		CategoryListComponent],
+		CategoryListComponent,
+		ProductListComponent],
 	imports: [
 		CommonModule,
 		AdminRoutingModule,

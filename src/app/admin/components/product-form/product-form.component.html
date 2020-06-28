@@ -7,38 +7,43 @@
 				<div class="col-6">
 					<mat-form-field appearance="fill">
 						<mat-label>Product Name</mat-label>
-						<input type="text" matInput required formControlName="productName">
+						<input type="text" matInput required formControlName="productName"
+							[(ngModel)]="selectedProduct.name">
 					</mat-form-field>
 					<br>
 
 					<mat-form-field appearance="fill">
 						<mat-label>Short Description</mat-label>
-						<input matInput required formControlName="shortDescription">
+						<input matInput required formControlName="shortDescription"
+							[(ngModel)]="selectedProduct.short_desc">
 					</mat-form-field>
 					<br>
 
 					<mat-form-field appearance="fill">
 						<mat-label>Long Description</mat-label>
-						<textarea matInput required formControlName="longDescription"></textarea>
+						<textarea matInput required formControlName="longDescription"
+							[(ngModel)]="selectedProduct.long_desc"></textarea>
 					</mat-form-field>
 					<br>
 				</div>
 				<div class="col-6">
 					<mat-form-field appearance="fill">
 						<mat-label>Unit Price(LKR)</mat-label>
-						<input type="number" matInput required formControlName="unitPriceLKR">
+						<input type="number" matInput required formControlName="unitPriceLKR"
+							[(ngModel)]="selectedProduct.unit_price_lkr">
 					</mat-form-field>
 					<br>
 
 					<mat-form-field appearance="fill">
 						<mat-label>Unit Price(USD)</mat-label>
-						<input type="number" matInput required formControlName="unitPriceUSD">
+						<input type="number" matInput required formControlName="unitPriceUSD"
+							[(ngModel)]="selectedProduct.unit_price_usd">
 					</mat-form-field>
 					<br>
 
 					<mat-form-field appearance="fill">
 						<mat-label>Measurement Unit</mat-label>
-						<mat-select formControlName="measurementUnit">
+						<mat-select formControlName="measurementUnit" [(ngModel)]="selectedProduct.measurementUnit">
 							<mat-option *ngFor="let item of mesurementUnits" [value]="item.value">{{item.name}}
 							</mat-option>
 						</mat-select>
@@ -66,6 +71,8 @@
 				</button>
 				<input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"
 					style="display:none;" />
+				<img mat-card-md-image class="mx-auto d-block" *ngIf="selectedProduct.thumbImage !== undefined"
+					src="{{env.apiUrl}}{{selectedProduct.thumbImage}}" alt="photo">
 			</div>
 			<!--Footer-->
 			<div class="p-5">
@@ -82,28 +89,31 @@
 			<!--form content-->
 			<mat-form-field appearance="fill">
 				<mat-label>Promotions</mat-label>
-				<textarea matInput formControlName="promotion"></textarea>
+				<textarea matInput formControlName="promotion" [(ngModel)]="selectedProduct.promotions"></textarea>
 			</mat-form-field>
 			<br>
 
-			<mat-checkbox formControlName="stockAvailable">Stock Available</mat-checkbox>
+			<mat-checkbox formControlName="stockAvailable" [(ngModel)]="selectedProduct.stockAvailable">Stock Available
+			</mat-checkbox>
 			<br>
 
-			<mat-checkbox formControlName="showToCustomer">Show to Customer</mat-checkbox>
+			<mat-checkbox formControlName="showToCustomer" [(ngModel)]="selectedProduct.showToCustomer">Show to Customer
+			</mat-checkbox>
 			<br>
 
 			<mat-form-field appearance="fill">
 				<mat-label>Category</mat-label>
-				<mat-select formControlName="category">
-					<mat-option *ngFor="let item of categoryList" [value]="item">{{item.name}}</mat-option>
+				<mat-select formControlName="category" [(ngModel)]="selectedProduct.category._id">
+					<mat-option *ngFor="let item of categoryList" [value]="item._id">{{item.name}}</mat-option>
 				</mat-select>
 			</mat-form-field>
 			<br>
 
 			<mat-form-field appearance="fill">
 				<mat-label>Supplier</mat-label>
-				<mat-select formControlName="supplier">
-					<mat-option *ngFor="let item of supplierList" [value]="item">{{item.company_name}}</mat-option>
+				<mat-select formControlName="supplier" [(ngModel)]="selectedProduct.supplier._id">
+					<mat-option *ngFor="let item of supplierList" [value]="item._id">{{item.company_name}}
+					</mat-option>
 				</mat-select>
 			</mat-form-field>
 			<br>
@@ -114,7 +124,8 @@
 			<p>You are now done.</p>
 			<div class="p-5">
 				<button mat-raised-button class="mr-3" matStepperPrevious color="primary">Back</button>
-				<button mat-raised-button class="mr-3" color="primary" (click)="productAddStepper.reset()">Reset</button>
+				<button mat-raised-button class="mr-3" color="primary"
+					(click)="productAddStepper.reset()">Reset</button>
 				<button mat-raised-button color="warn"
 					(click)="saveProduct(basicInforFormGroup.value,imageFormGroup.value, associationFormGroup.value)">Complete</button>
 			</div>

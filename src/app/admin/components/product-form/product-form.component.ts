@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { CategoryService } from 'src/app/common/ws/category.service';
 import { SupplierService } from 'src/app/common/ws/supplier.service';
@@ -7,6 +7,9 @@ import { Category } from 'src/app/common/model/category';
 import { Supplier } from 'src/app/common/model/supplier';
 import { ProductService } from 'src/app/common/ws/product.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProductDataService } from 'src/app/common/data-service/product-data.service';
+import { SupplierDataServiceService } from 'src/app/common/data-service/supplier-data-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-product-form',
@@ -16,6 +19,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ProductFormComponent implements OnInit {
 	public categoryList = [];
 	public supplierList = [];
+	public selectedProduct: Product;
+	@Input() forEdit: Boolean = false;
+	public env = environment;
 
 	//STEPPER
 	basicInforFormGroup: FormGroup;
@@ -31,7 +37,13 @@ export class ProductFormComponent implements OnInit {
 	@ViewChild("fileUpload", { static: false }) fileUpload: ElementRef; files = [];
 
 	constructor(private categoryService: CategoryService, private supplierService: SupplierService,
-		private formBuilder: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar) { }
+		private formBuilder: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar,
+		private productDataService: ProductDataService) {
+		// initializa an empty product model
+		this.selectedProduct = new Product();
+		this.selectedProduct.supplier = new Supplier();
+		this.selectedProduct.category = new Category();
+	}
 
 	ngOnInit(): void {
 		this.basicInforFormGroup = new FormGroup({
@@ -64,37 +76,47 @@ export class ProductFormComponent implements OnInit {
 		}, error => {
 
 		});
+
+		this.productDataService.selectionStatus.subscribe((data: Product) => {
+			if (data !== undefined && this.forEdit === true) {
+				this.selectedProduct = data;
+			}
+		});
 	}
 
 	saveProduct(basicInfo: any, imageInfo: any, associateInfo: any) {
 		if (this.basicInforFormGroup.valid && this.associationFormGroup.valid && this.imageFormGroup.valid) {
-			const supplier: Supplier = new Supplier().deserialize(associateInfo.supplier);
-			const category: Category = new Category().deserialize(associateInfo.category);
-			const product: Product = new Product().deserialize(basicInfo);
-			product.category = category._id;
-			product.supplier = supplier._id;
-			product.showToCustomer = associateInfo.showToCustomer;
-			product.stockAvailable = associateInfo.stockAvailable;
-			product.promotions = associateInfo.promotion;
-
 			const formData = new FormData();
-			formData.append('product-image', this.files[0].data);
-			formData.append('productinfo', JSON.stringify(product));
-			this.productService.addProduct(formData).subscribe(data => {
-				this.openSnackBar('Product added successfully', 'OK');
-				this.resetForm();
-			}, error => {
-				this.openSnackBar('Product adding failed', 'OK');
-				console.log(error);
-			});
+			if (this.files.length !== 0) {
+				formData.append('product-image', this.files[0].data);
+			}
+			formData.append('productinfo', JSON.stringify(this.selectedProduct));
+			if (this.forEdit) {
+				this.productService.updateProduct(formData).subscribe(data => {
+					this.openSnackBar('Product updated successfully', 'OK');
+					this.productDataService.dataSetModified = true;
+				}, error => {
+					this.openSnackBar('Product updating failed', 'OK');
+				});
+			} else {
+				this.productService.addProduct(formData).subscribe(data => {
+					this.productDataService.dataSetModified = true;
+					this.openSnackBar('Product added successfully', 'OK');
+					this.resetForm();
+				}, error => {
+					this.openSnackBar('Product adding failed', 'OK');
+				});
+			}
+		} else {
+			this.openSnackBar('Invalid form data contains', 'OK');
 		}
 	}
 
 	openSnackBar(message: string, action: string) {
 		this.snackBar.open(message, action, {
-		  duration: 2000,
+			duration: 2000,
 		});
-	  }
+	}
 
 	resetForm() {
 		this.basicInforFormGroup.reset();

@@ -1,0 +1,22 @@
+<mat-accordion>
+	<mat-expansion-panel *ngFor="let item of categoryList">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				{{item.name}}
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<div class="col">
+			<div class="row" *ngFor="let product of productList | productCategoryFilter: item">
+				<div class="col-10">
+					<mat-label>{{product.name}}</mat-label>
+				</div>
+				<div class="col-2">
+					<button mat-button class="text-right" color="primary"
+						(click)="addProductToPack(product)">
+						<mat-icon>add_circle_outline</mat-icon>
+					</button>
+				</div>
+			</div>
+		</div>
+	</mat-expansion-panel>
+</mat-accordion>

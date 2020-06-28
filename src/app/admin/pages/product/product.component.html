@@ -1,20 +1,27 @@
 <div class="container">
 	<mat-tab-group>
-
 		<mat-tab label="View">
 			<h1>All Products</h1>
 			<app-product-grid-view></app-product-grid-view>
 		</mat-tab>
 		<mat-tab label="Add">
 			<h1>Add A New Product</h1>
-			<app-product-form></app-product-form>
+			<app-product-form [forEdit]="false"></app-product-form>
 		</mat-tab>
-
-
-
-		<mat-tab label="Search">
+		<mat-tab label="Edit">
+			<h1>Edit Product</h1>
+			<div class="row">
+				<div class="col-4">
+					<app-product-list></app-product-list>
+				</div>
+				<div class="col-8">
+					<app-product-form [forEdit]="true"></app-product-form>
+				</div>
+			</div>
+		</mat-tab>
+		<!--<mat-tab label="Search">
 			<h1>Search Products</h1>
 			<h3>This part will be implemented later</h3>
-		</mat-tab>
+		</mat-tab>-->
 	</mat-tab-group>
 </div>
