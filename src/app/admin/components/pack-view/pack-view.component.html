@@ -11,7 +11,7 @@
 	<div class="row" *ngFor="let packItem of item.packItems">
 		<div class="col-11">
 			<mat-form-field>
-				<mat-label>{{packItem.productId.name}}</mat-label>
+				<mat-label>{{packItem.product.name}}</mat-label>
 				<input matInput [(ngModel)]="packItem.quantity">
 			</mat-form-field>
 		</div>

@@ -43,10 +43,9 @@ export class PackCreateComponent implements OnInit {
 	}
 
 	addProductToPack(product: Product) {
-		if (this.packItems.findIndex(item => item.productId === product._id) == -1) {
+		if (this.packItems.findIndex(item => item.product._id === product._id) == -1) {
 			const newPackItem = new PackItem();
-			newPackItem.productId = product._id;
-			newPackItem.productName = product.name;
+			newPackItem.product = product;
 			newPackItem.quantity = 1;
 			this.packItems.push(newPackItem);
 		}

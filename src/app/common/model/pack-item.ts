@@ -1,8 +1,8 @@
 import { Deserializable } from './Deserializable';
+import { Product } from './product';
 
 export class PackItem implements Deserializable {
-	productId: string;
-	productName: string;
+	product: Product;
     quantity: number;
 
     deserialize(input: any): this {
