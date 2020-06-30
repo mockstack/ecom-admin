@@ -1,0 +1,6 @@
+<mat-card class="m-1">
+	<mat-checkbox (change)="model.service_available = $event.checked; this.onSelect.emit();"
+		[checked]="model.service_available">
+		{{model.name_en}}
+	</mat-checkbox>
+</mat-card>

@@ -65,6 +65,8 @@ import { ProductCategoryFilterPipe } from './pipe/product-category-filter.pipe';
 import { SupplierListComponent } from './components/supplier-list/supplier-list.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { CityComponent } from './pages/city/city.component';
+import { CityViewComponent } from './components/city-view/city-view.component';
 
 @NgModule({
 	declarations: [
@@ -86,7 +88,9 @@ import { ProductListComponent } from './components/product-list/product-list.com
 		ProductCategoryFilterPipe,
 		SupplierListComponent,
 		CategoryListComponent,
-		ProductListComponent],
+		ProductListComponent,
+		CityComponent,
+		CityViewComponent],
 	imports: [
 		CommonModule,
 		AdminRoutingModule,
