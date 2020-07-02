@@ -41,7 +41,7 @@ export class CityComponent implements OnInit {
 		switch (type) {
 			case 'province':
 				if (mapItem.service_available) {
-					this.cityService.getDistrictsByProvinceId(mapItem.id).subscribe((data: District[]) => {
+					this.cityService.getDistrictsByProvinceId(mapItem._id).subscribe((data: District[]) => {
 						this.districtList = data;
 					});
 				} else {
@@ -52,7 +52,7 @@ export class CityComponent implements OnInit {
 				break;
 			case 'district':
 				if (mapItem.service_available) {
-					this.cityService.getCitiesByDistrictId(mapItem.id).subscribe((data: City[]) => {
+					this.cityService.getCitiesByDistrictId(mapItem._id).subscribe((data: City[]) => {
 						this.cityList = data;
 						this.cityList = this.cityList.map((val, index) => {
 							if (this.selectedCityList.filter(item=>item._id === val._id).length !== 0) {

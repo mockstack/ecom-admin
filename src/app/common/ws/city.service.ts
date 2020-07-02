@@ -21,7 +21,7 @@ export class CityService {
 
 	/**Get districts for a province */
 	public getDistrictsByProvinceId(provinceId): Observable<object> {
-		return this.httpClient.get(this.DISTRICT + provinceId);
+		return this.httpClient.get(this.DISTRICT + 'province/' + provinceId);
 	}
 
 	/**Get cities for a district */
