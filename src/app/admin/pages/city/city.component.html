@@ -1,40 +1,12 @@
 <div class="container">
-	<div class="row card" *ngIf="deliveryArea.length > 0">
-		<div class="col-sm">
-			<div class="row p-2">
-				<h2>Selected Cities</h2>
-			</div>
-			<div class="row p-2">
-				<mat-chip-list aria-label="Fish selection">
-					<mat-chip color="" *ngFor="let delArea of deliveryArea" selected>{{delArea.city.name_en}}
-					</mat-chip>
-				</mat-chip-list>
-			</div>
-			<div class="row p-2">
-				<button class="float-right" mat-flat-button color="accent" (click)="saveDeliveryInfo()">Save</button>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4">
-			<h3>Provinces</h3>
-			<div class="row" *ngFor="let province of provinceList">
-				<app-city-view class="w-75" [model]="province" (onSelect)="itemSelected(province, 'province')">
-				</app-city-view>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<h3>Districts</h3>
-			<div class="row" *ngFor="let district of districtList">
-				<app-city-view class="w-75" [model]="district" (onSelect)="itemSelected(district, 'district')">
-				</app-city-view>
-			</div>
-		</div>
-		<div class="col-sm-4">
-			<h3>Cities</h3>
-			<div class="row" *ngFor="let city of cityList">
-				<app-city-view class="w-75" [model]="city" (onSelect)="itemSelected(city, 'city')"></app-city-view>
-			</div>
-		</div>
-	</div>
+	<mat-tab-group>
+		<mat-tab label="Add/Remove">
+			<h1>Add/Remove Delivery Areas</h1>
+			<app-delivery-area-view></app-delivery-area-view>
+		</mat-tab>
+		<mat-tab label="Charges">
+			<h1>Edit Delivery Charges</h1>
+			<app-delivery-charge-view></app-delivery-charge-view>
+		</mat-tab>
+	</mat-tab-group>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValueOf } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DeliveryArea } from '../model/delivery-area';
 
@@ -55,11 +55,21 @@ export class CityService {
 
 	/**Add delivery city list */
 	public addDeliveryCities(deliveryAreaList: DeliveryArea[]): Observable<object> {
-		return this.httpClient.post(this.DEL_AREA, {"cities": deliveryAreaList});
+		return this.httpClient.post(this.DEL_AREA, { "cities": deliveryAreaList });
 	}
 
 	/**Update delivery city list */
 	public updateDeliveryCities(deliveryAreaList: DeliveryArea[]): Observable<object> {
-		return this.httpClient.put(this.DEL_AREA, {"cities": deliveryAreaList});
+		return this.httpClient.put(this.DEL_AREA, { "cities": deliveryAreaList });
+	}
+
+	/**Update delivery area's charge and active status */
+	public updateDeliveryCharges(deliveryArea: DeliveryArea): Observable<object> {
+		const values = {
+			delivery_charge: deliveryArea.delivery_charge,
+			active: deliveryArea.active
+		};
+
+		return this.httpClient.put(this.DEL_AREA + deliveryArea._id, values);
 	}
 }
