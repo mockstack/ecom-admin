@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { DeliveryArea } from '../model/delivery-area';
 
 @Injectable({
 	providedIn: 'root'
@@ -53,12 +54,12 @@ export class CityService {
 	}
 
 	/**Add delivery city list */
-	public addDeliveryCities(idList: String[]): Observable<object> {
-		return this.httpClient.post(this.DEL_AREA, {"cities": idList});
+	public addDeliveryCities(deliveryAreaList: DeliveryArea[]): Observable<object> {
+		return this.httpClient.post(this.DEL_AREA, {"cities": deliveryAreaList});
 	}
 
 	/**Update delivery city list */
-	public updateDeliveryCities(idList: String[], listId: String): Observable<object> {
-		return this.httpClient.put(this.DEL_AREA + listId, {"cities": idList});
+	public updateDeliveryCities(deliveryAreaList: DeliveryArea[]): Observable<object> {
+		return this.httpClient.put(this.DEL_AREA, {"cities": deliveryAreaList});
 	}
 }

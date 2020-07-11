@@ -1,12 +1,12 @@
 <div class="container">
-	<div class="row card" *ngIf="selectedCityList.length > 0">
+	<div class="row card" *ngIf="deliveryArea.length > 0">
 		<div class="col-sm">
 			<div class="row p-2">
 				<h2>Selected Cities</h2>
 			</div>
 			<div class="row p-2">
 				<mat-chip-list aria-label="Fish selection">
-					<mat-chip color="" *ngFor="let city of selectedCityList" selected>{{city.name_en}}
+					<mat-chip color="" *ngFor="let delArea of deliveryArea" selected>{{delArea.city.name_en}}
 					</mat-chip>
 				</mat-chip-list>
 			</div>
