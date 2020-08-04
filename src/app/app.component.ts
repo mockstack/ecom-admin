@@ -18,7 +18,7 @@ export class AppComponent {
 		this.userService.validateSession().subscribe((data: any) => {
 			console.log(data)
 			if (data.user.role === 'ADMIN') {
-				this.router.navigateByUrl('city')
+				this.router.navigateByUrl('dashboard')
 			} else if (data.user.role === 'ORDER') {
 				this.router.navigateByUrl('odashboard')
 			}
