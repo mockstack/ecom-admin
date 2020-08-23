@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from './order/order.module';
 import { CommonModule } from '@angular/common';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -26,9 +25,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 	FormsModule,
 	OrderModule
   ],
-  providers: [
-	{ provide: LocationStrategy, useClass: HashLocationStrategy },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
