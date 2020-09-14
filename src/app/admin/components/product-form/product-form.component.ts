@@ -80,6 +80,7 @@ export class ProductFormComponent implements OnInit {
 		this.productDataService.selectionStatus.subscribe((data: Product) => {
 			if (data !== undefined && this.forEdit === true) {
 				this.selectedProduct = data;
+				this.files = [];
 			}
 		});
 	}

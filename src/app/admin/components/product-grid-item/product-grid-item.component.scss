@@ -1,8 +1,15 @@
 .example-card {
-	width: 20rem;
-	padding: 1rem;
+	width: max-content;
+	/*width: 20rem;
+	height: 20rem;
+	padding: 2rem;*/
+	//background-color: chocolate;
 }
 
 .card-content {
 	height: 40px;
+}
+
+mat-card-title {
+	width: 100%;
 }
