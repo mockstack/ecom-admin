@@ -10,7 +10,7 @@ export class ProductCategoryFilterPipe implements PipeTransform {
 		  return products;
 		}
 
-		return products.filter(item =>  item.category.name == filter.name);
+		return products.filter(item =>  (item.category !== null && item.category.name == filter.name));
 	  }
 
 
