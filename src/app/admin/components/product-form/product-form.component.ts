@@ -61,6 +61,7 @@ export class ProductFormComponent implements OnInit {
 			promotion: new FormControl(''),
 			stockAvailable: new FormControl(true),
 			showToCustomer: new FormControl(true),
+			stockMaintain: new FormControl(false),
 			category: new FormControl('', Validators.required),
 			supplier: new FormControl('', Validators.required)
 		});

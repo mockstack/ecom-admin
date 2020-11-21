@@ -10,6 +10,7 @@ export class ProductConcrete implements Deserializable {
 	promotions: string;
 	stockAvailable: boolean;
 	showToCustomer: boolean;
+	stockMaintain: boolean;
 	measurementUnit: string;
 	thumbImage: string;
 	fullImage: string;
