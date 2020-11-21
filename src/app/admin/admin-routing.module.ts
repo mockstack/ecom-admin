@@ -7,6 +7,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { AdminComponent } from './admin.component';
 import { SupplierComponent } from './pages/supplier/supplier.component';
 import { CityComponent } from './pages/city/city.component';
+import { InventoryComponent } from './pages/inventory/inventory.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: 'product', component: ProductComponent },
       { path: 'pack', component: PackComponent },
 	  { path: 'supplier', component: SupplierComponent },
-	  { path: 'city', component: CityComponent }
+	  { path: 'city', component: CityComponent },
+	  { path: 'inventory', component: InventoryComponent }
     ]
   }
 ];

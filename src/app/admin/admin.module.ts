@@ -69,6 +69,7 @@ import { CityComponent } from './pages/city/city.component';
 import { CityViewComponent } from './components/city-view/city-view.component';
 import { DeliveryAreaViewComponent } from './components/delivery-area-view/delivery-area-view.component';
 import { DeliveryChargeViewComponent } from './components/delivery-charge-view/delivery-charge-view.component';
+import { InventoryComponent } from './pages/inventory/inventory.component';
 
 @NgModule({
 	declarations: [
@@ -94,7 +95,8 @@ import { DeliveryChargeViewComponent } from './components/delivery-charge-view/d
 		CityComponent,
 		CityViewComponent,
 		DeliveryAreaViewComponent,
-		DeliveryChargeViewComponent],
+		DeliveryChargeViewComponent,
+		InventoryComponent],
 	imports: [
 		CommonModule,
 		AdminRoutingModule,
