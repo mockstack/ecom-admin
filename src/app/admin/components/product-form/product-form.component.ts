@@ -12,6 +12,7 @@ import { SupplierDataServiceService } from 'src/app/common/data-service/supplier
 import { environment } from 'src/environments/environment';
 
 @Component({
+	standalone: false,
 	selector: 'app-product-form',
 	templateUrl: './product-form.component.html',
 	styleUrls: ['./product-form.component.scss']

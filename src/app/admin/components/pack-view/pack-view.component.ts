@@ -5,6 +5,7 @@ import { Pack } from 'src/app/common/model/pack';
 import { PackItem } from 'src/app/common/model/pack-item';
 
 @Component({
+	standalone: false,
 	selector: 'app-pack-view',
 	templateUrl: './pack-view.component.html',
 	styleUrls: ['./pack-view.component.scss']

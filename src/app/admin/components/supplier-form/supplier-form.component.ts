@@ -8,6 +8,7 @@ import { Supplier } from 'src/app/common/model/supplier';
 import { SupplierDataServiceService } from 'src/app/common/data-service/supplier-data-service.service';
 
 @Component({
+	standalone: false,
 	selector: 'app-supplier-form',
 	templateUrl: './supplier-form.component.html',
 	styleUrls: ['./supplier-form.component.scss']

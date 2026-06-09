@@ -5,6 +5,7 @@ import { Supplier } from 'src/app/common/model/supplier';
 import { SupplierDataServiceService } from 'src/app/common/data-service/supplier-data-service.service';
 
 @Component({
+	standalone: false,
 	selector: 'app-supplier-view',
 	templateUrl: './supplier-view.component.html',
 	styleUrls: ['./supplier-view.component.scss']

@@ -9,6 +9,7 @@ import { DeliveryArea } from 'src/app/common/model/delivery-area';
 import { DeliveryAreaDataServiceService } from 'src/app/common/data-service/delivery-area-data-service.service';
 
 @Component({
+	standalone: false,
   selector: 'app-delivery-area-view',
   templateUrl: './delivery-area-view.component.html',
   styleUrls: ['./delivery-area-view.component.scss']

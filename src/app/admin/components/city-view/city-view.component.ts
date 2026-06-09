@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MapItem } from 'src/app/common/model/map-item';
 
 @Component({
+	standalone: false,
 	selector: 'app-city-view',
 	templateUrl: './city-view.component.html',
 	styleUrls: ['./city-view.component.scss']

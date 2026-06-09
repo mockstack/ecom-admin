@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeliveryArea } from 'src/app/common/model/delivery-area';
 
 @Component({
+	standalone: false,
 	selector: 'app-city',
 	templateUrl: './city.component.html',
 	styleUrls: ['./city.component.scss']

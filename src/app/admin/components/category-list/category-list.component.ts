@@ -8,6 +8,7 @@ import { Category } from 'src/app/common/model/category';
 import { CategoryDataServiceService } from 'src/app/common/data-service/category-data-service.service';
 
 @Component({
+	standalone: false,
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']

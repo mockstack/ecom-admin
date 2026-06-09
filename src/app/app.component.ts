@@ -4,6 +4,7 @@ import { UserService } from './common/ws/user.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
+	standalone: false,
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']

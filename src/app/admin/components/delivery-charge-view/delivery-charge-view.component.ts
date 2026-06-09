@@ -5,6 +5,7 @@ import { DeliveryArea } from 'src/app/common/model/delivery-area';
 import { DeliveryAreaDataServiceService } from 'src/app/common/data-service/delivery-area-data-service.service';
 
 @Component({
+	standalone: false,
 	selector: 'app-delivery-charge-view',
 	templateUrl: './delivery-charge-view.component.html',
 	styleUrls: ['./delivery-charge-view.component.scss']

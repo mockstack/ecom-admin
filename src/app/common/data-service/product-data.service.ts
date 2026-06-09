@@ -10,8 +10,8 @@ export class ProductDataService {
 	private _selectedProduct: Product;
 	private _dataSetModified: Boolean;
 
-	private productSelectNotifier = new BehaviorSubject(this._selectedProduct);
-	private dataSetModifiedNotifier = new BehaviorSubject(this._dataSetModified);
+	private productSelectNotifier = new BehaviorSubject<Product>(undefined);
+	private dataSetModifiedNotifier = new BehaviorSubject<Boolean>(undefined);
 
 	public selectionStatus = this.productSelectNotifier.asObservable();
 	public dataSetModifiedStaus = this.dataSetModifiedNotifier.asObservable();

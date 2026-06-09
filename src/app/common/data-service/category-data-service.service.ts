@@ -10,8 +10,8 @@ export class CategoryDataServiceService {
 	private _selectedCategory: Category;
 	private _dataSetModified: Boolean;
 
-	private dataModifiedNotifier = new BehaviorSubject(this._dataSetModified);
-	private notifier = new BehaviorSubject(this._selectedCategory);
+	private dataModifiedNotifier = new BehaviorSubject<Boolean>(undefined);
+	private notifier = new BehaviorSubject<Category>(undefined);
 	public selectionStatus = this.notifier.asObservable();
 	public dataSetModifiedStatus = this.dataModifiedNotifier.asObservable();
 

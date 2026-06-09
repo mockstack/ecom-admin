@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CategoryFormComponent } from '../../components/category-form/category-form.component';
 
 @Component({
+	standalone: false,
 	selector: 'app-category',
 	templateUrl: './category.component.html',
 	styleUrls: ['./category.component.scss']

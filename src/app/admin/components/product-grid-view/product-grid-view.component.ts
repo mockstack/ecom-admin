@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductDataService } from 'src/app/common/data-service/product-data.service';
 
 @Component({
+	standalone: false,
 	selector: 'app-product-grid-view',
 	templateUrl: './product-grid-view.component.html',
 	styleUrls: ['./product-grid-view.component.scss']

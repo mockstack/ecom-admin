@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CategoryDataServiceService } from 'src/app/common/data-service/category-data-service.service';
 
 @Component({
+	standalone: false,
 	selector: 'app-category-form',
 	templateUrl: './category-form.component.html',
 	styleUrls: ['./category-form.component.scss']

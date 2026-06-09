@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
+	standalone: false,
 	selector: 'app-admin',
 	templateUrl: './admin.component.html',
 	styleUrls: ['./admin.component.scss']

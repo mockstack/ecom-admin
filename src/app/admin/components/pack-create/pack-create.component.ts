@@ -9,6 +9,7 @@ import { Pack } from 'src/app/common/model/pack';
 import { PackService } from 'src/app/common/ws/pack.service';
 
 @Component({
+	standalone: false,
 	selector: 'app-pack-create',
 	templateUrl: './pack-create.component.html',
 	styleUrls: ['./pack-create.component.scss']
